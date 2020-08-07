@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<TITLE>NeJa Tutorials</TITLE>
+	<META http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://sapui5.hana.ondemand.com/1.38.18/resources/sap-ui-core.js"
+		id="sap-ui-bootstrap"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.table">
+	</script>
+	<script type="text/javascript">
+
+	sap.ui.getCore().attachInit(function () {
+	
+	
+//alert("Hi");
+
+});
+	</script>
+
+	
+	<script>
+
+	sap.ui.localResources("view");
+	sap.ui.localResources("controller");
+	sap.ui.localResources("model");
+
+	            var app = new sap.m.App({id:"myApp", initialPage:"idInitPage"});
+                var initpage = sap.ui.view({id:"idInitPage", viewName:"view.addform" , type:sap.ui.core.mvc.ViewType.XML});
+                
+                var welcomepage = sap.ui.view({id:"idWelcomePage", viewName:"view.welcomepage" , type:sap.ui.core.mvc.ViewType.XML});
+                app.addPage(initpage);
+                app.addPage(welcomepage);
+                app.placeAt("sample");
+	</script>
+	
+</head>
+<body class="sapUiBody" id="sample">
+</body>
+</html>

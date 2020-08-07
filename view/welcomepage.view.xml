@@ -1,0 +1,305 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:viz.feeds = "sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data = "sap.viz.ui5.data" xmlns:viz = "sap.viz.ui5.controls" 
+   	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:ui="sap.ui.commons"
+	xmlns:layout="sap.ui.commons.layout"
+	xmlns:table= "sap.ui.table" 
+	controllerName="controller.welcomepage"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    >
+    <Page id ="idWelcomePage"  title="Assessment" class="sapUiContentPadding"
+        showNavButton="true" navButtonPress="navback">
+    	 <content>
+			<Toolbar>
+		
+						<Label id = "LblWelcome" text="" class="sapUiSmalMarginBegin" design = "Bold" required="" width="30em"/>
+					
+			</Toolbar>
+			
+		<IconTabBar
+		id="idIconTabBar"
+		select="handleIconTabBarSelect"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				icon="sap-icon://measure"
+				iconColor="Neutral"
+				
+				text="Level 1"
+				key="Lvl1">
+				<Toolbar>
+				<ObjectStatus icon = "sap-icon://hint" text = "Rate yourself out of 10 in your subjects"/>	
+				</Toolbar>
+						<HBox>
+						<Label text="Languages" class="sapUiSmallMarginBegin sapUiSmallMarginTop" required="true" width="10em"/>
+						<Slider progress = "false" id = "idSlideLanguages" showAdvancedTooltip="true" width="20em" liveChange = "liveChangeLanguages" min="0" max="10" step="1" class="sapUiSmallMarginBottom"/>
+						<Input  type = "Number" id="idInputLanguages" enabled = "false" width="3em"/>
+						</HBox>
+						
+						<HBox>
+						<Label text="Mathematics" class="sapUiSmallMarginBegin sapUiSmallMarginTop" required="true" width="10em"/>
+						<Slider progress = "false" id = "idSlideMathematics" showAdvancedTooltip="true" width="20em" liveChange = "liveChangeMathematics" min="0" max="10" step="1" class="sapUiSmallMarginBottom"/>
+						<Input  type = "Number" id="idInputMathematics" enabled = "false" width="3em"/>
+						</HBox>
+						
+						<HBox>
+						<Label text="Science" class="sapUiSmallMarginBegin sapUiSmallMarginTop" required="true" width="10em"/>
+						<Slider progress = "false" id = "idSlideScience" showAdvancedTooltip="true" width="20em" liveChange = "liveChangeScience" min="0" max="10" step="1" class="sapUiSmallMarginBottom"/>
+						<Input  type = "Number" id="idInputScience" enabled = "false" width="3em"/>
+						</HBox>
+						
+						<HBox>
+						<Label text="Social Science" class="sapUiSmallMarginBegin sapUiSmallMarginTop" required="true" width="10em"/>
+						<Slider progress = "false" id = "idSlideSocialScience" showAdvancedTooltip="true" width="20em" liveChange = "liveChangeSocialScience" min="0" max="10" step="1" class="sapUiSmallMarginBottom"/>
+						<Input  type = "Number" id="idInputSocialScience" enabled = "false" width="3em"/>
+						</HBox>
+						
+						<HBox>
+						<Label text="ICT" class="sapUiSmallMarginBegin sapUiSmallMarginTop" required="true" width="10em"/>
+						<Slider progress = "false" id = "idSlideICT" showAdvancedTooltip="true" width="20em" liveChange = "liveChangeICT" min="0" max="10" step="1" class="sapUiSmallMarginBottom"/>
+						<Input  type = "Number" id="idInputICT" enabled = "false" width="3em"/>
+						</HBox>
+						
+						<HBox>
+						<Button text="Reset" icon = "sap-icon://reset" width="10em" press="onPressReset"/>		
+						<Label text="" class="sapUiSmalMarginBegin"  width="2em"/>
+						<Button text="Next"  width="10em" icon = "sap-icon://arrow-right" press="onPressNext"/>
+						</HBox>
+						
+						</IconTabFilter>
+						
+						
+				<IconTabFilter
+				icon="sap-icon://add-activity"
+				iconColor="Neutral"
+			
+				
+				text="Level 2"
+				key="Lvl2">
+
+            <Panel visible = "false" id = "idLanguagePanel" class = "panelStyle" expandable = "true" expanded = "true" headerText = "Languages" width = "auto">
+  <content>
+		
+			<Toolbar>
+				<Label text="Select Sub Topics you liked the most" class="sapUiSmalMarginBegin" design="Bold" width="50%"/>
+			</Toolbar>
+
+<HBox id = "hboxEnglish">
+	<CheckBox id = "idEg" selected = "false" text = "English Grammar"/>
+	<CheckBox id = "idEf" selected = "false" text = "English Figures of Speech"/>
+	<CheckBox id = "idEs" selected = "false" text = "English Chapter Stories"/>
+	<CheckBox id = "idEc" selected = "false" text = "English Comprehension"/>
+	<CheckBox id = "idEp" selected = "false" text = "English Poems"/>
+</HBox>
+
+<HBox id = "hboxMarathi">
+	<CheckBox id = "idMg" selected = "false" text = "Marathi Grammar"/>
+	<CheckBox id = "idMs" selected = "false" text = "Marathi Chapter Stories"/>
+	<CheckBox id = "idMc" selected = "false" text = "Marathi Comprehension"/>
+	<CheckBox id = "idMp" selected = "false" text = "Marathi Poems"/>
+</HBox>
+
+<HBox id = "hboxHindi">
+	<CheckBox id = "idHg" selected = "false" text = "Hindi Grammar"/>
+	<CheckBox id = "idHs" selected = "false" text = "Hindi Chapter Stories"/>
+	<CheckBox id = "idHc" selected = "false" text = "Hindi Comprehension"/>
+	<CheckBox id = "idHp" selected = "false" text = "Hindi Poems"/>
+</HBox>
+
+                </content>
+            </Panel> 
+ 
+
+   
+            <Panel visible = "false" id = "idMathsPanel" class = "panelStyle" expandable = "true" expanded = "true" headerText = "Mathematics" width = "auto">
+  <content>
+		
+			<Toolbar>
+			
+				
+<Label text="Select Sub Topics you liked the most" class="sapUiSmalMarginBegin" design="Bold" width="50%"/>
+
+
+			</Toolbar>
+
+<HBox id = "hboxMaths1">
+	<CheckBox id = "idAp" selected = "false" text = "Arithimetic / Geometric Progression"/>
+	<CheckBox id = "idFp" selected = "false" text = "Financial Planning"/>
+	<CheckBox id = "idEq" selected = "false" text = "Quadratic / Linear Equations"/>
+	<CheckBox id = "idPr" selected = "false" text = "Probablity"/>
+	<CheckBox id = "idRp" selected = "false" text = "Ratio Proportion"/>
+	<CheckBox id = "idSt" selected = "false" text = "Statistics"/>
+	<CheckBox id = "idGr" selected = "false" text = "Graphs"/>
+</HBox>
+
+<HBox id = "hboxMaths2">
+	<CheckBox id = "idGe" selected = "false" text = "Geometric Similarity / Congruence"/>
+	<CheckBox id = "idCo" selected = "false" text = "Constructions"/>
+	<CheckBox id = "idMe" selected = "false" text = "Mensuration"/>
+	<CheckBox id = "idTr" selected = "false" text = "Trigonometry"/>
+	<CheckBox id = "idCg" selected = "false" text = "Coordinate Geometry"/>
+	<CheckBox id = "idTc" selected = "false" text = "Triangles / Circle"/>
+</HBox>
+
+                </content>
+            </Panel>
+
+            <Panel visible = "false" id = "idSciencePanel" class = "panelStyle" expandable = "true" expanded = "true" headerText = "Science" width = "auto">
+  <content>
+		
+			<Toolbar>
+	<Label text="Select Sub Topics you liked the most" class="sapUiSmalMarginBegin" design="Bold" width="50%"/>
+			</Toolbar>
+
+
+<HBox id = "hboxScience1">
+	<CheckBox id = "idPh" selected = "false" text = "Physics (Motion, Light, Sound)"/>
+	<CheckBox id = "idCh" selected = "false" text = "Chemistry (Atoms, Hydrocarbons)"/>
+	<CheckBox id = "idBi" selected = "false" text = "Biology (Human, Animal and Plant cells)"/>
+	<CheckBox id = "idEv" selected = "false" text = "Environmental (Food, Pollution, Plants, Ecosystem)"/>
+</HBox>	
+<HBox id = "hboxScience2">
+
+	<CheckBox id = "idEl" selected = "false" text = "Electricals (Current, Ohms law, Joules law)"/>
+	<CheckBox id = "idEt" selected = "false" text = "Electronics (Semiconductors, Metallurgy)"/>
+	
+</HBox>
+
+                </content>
+            </Panel> 
+    
+   
+            <Panel visible = "false" id = "idSocialSciencePanel" class = "panelStyle" expandable = "true" expanded = "true" headerText = "Social Science" width = "auto">
+  <content>
+		
+			<Toolbar>
+	<Label text="Select Sub Topics you liked the most" class="sapUiSmalMarginBegin" design="Bold" width="50%"/>
+			</Toolbar>
+
+
+<HBox  id = "hboxSocialScience1">
+	<CheckBox id = "idAh" selected = "false" text = "Ancient History (Vedic, Archeological)"/>
+	<CheckBox id = "idMeh" selected = "false" text = "Medieval History (Chalukyas, Pandyas)"/>
+	<CheckBox id = "idMoh" selected = "false" text = "Modern History (Indian Freedom Struggle)"/>
+	<CheckBox id = "idSh" selected = "false" text = "Stone age History (Homo Erectus, Sapiens)"/>
+	</HBox>	
+
+<HBox id = "hboxSocialScience2">
+	<CheckBox id = "idCw" selected = "false" text = "Climate and Weather"/>
+	<CheckBox id = "idPd" selected = "false" text = "Physical Divisions (Mountains, Oceans)"/>
+	<CheckBox id = "idPm" selected = "false" text = "Political Maps (Population, Income)"/>
+	<CheckBox id = "idE" selected = "false" text = "Economics"/>
+	<CheckBox id = "idPo" selected = "false" text = "Politics"/>	
+</HBox>	
+
+                </content>
+            </Panel> 
+            
+             <Panel visible = "false" id = "idIctPanel" class = "panelStyle" expandable = "true" expanded = "true" headerText = "Computer Technology" width = "auto">
+  <content>
+		
+			<Toolbar>
+	<Label text="Select Sub Topics you liked the most" class="sapUiSmalMarginBegin" design="Bold" width="50%"/>
+			</Toolbar>
+
+
+<HBox  id = "hboxIct">
+	<CheckBox id = "idMo" selected = "false" text = "Microsoft Office (Word, Powerpoint)"/>
+	<CheckBox id = "idCt" selected = "false" text = "Coding Techniques (Excel formulas, turtle)"/>
+	<CheckBox id = "idHa" selected = "false" text = "Hardware (Mouse, Keyboard)"/>
+	<CheckBox id = "idCc" selected = "false" text = "Cloud Computing (Internet, Email, WWW)"/>
+	</HBox>	
+
+
+                </content>
+            </Panel>            
+ 	
+ 	
+ 			<HBox>
+				<Button text="Previous" icon = "sap-icon://arrow-left" width="10em" press="onPressPrevious"/>		
+				<Label text="" class="sapUiSmalMarginBegin"  width="2em"/>
+				<Button text="Submit"  width="10em" icon = "sap-icon://save" press="onPressSubmit"/>
+			</HBox>
+						
+						
+						</IconTabFilter>
+						
+						
+									<IconTabFilter
+				icon="sap-icon://kpi-corporate-performance"
+				iconColor="Neutral"
+				text="Results"
+				key="Res">	
+
+	<viz:VizFrame id="idpiechart" visible = "false" height = "300px" width="900px"
+    uiConfig="{applicationSet:'fiori'}" vizType="pie"
+    
+		    selectData="myOnClickHandler" 
+                    noDataText="Nothing to show"
+		    renderComplete="handleRenderComplete"
+   >
+     <viz:dataset>
+	<viz.data:FlattenedDataset id="flattenData" data="{SubjectScoreModel>/Items}">
+           <viz.data:dimensions>
+	     <viz.data:DimensionDefinition name="Subject" value="{SubjectScoreModel>Subject}" />
+           </viz.data:dimensions>
+	   <viz.data:measures>
+              <viz.data:MeasureDefinition name="Score" value="{SubjectScoreModel>Score}" />
+	   </viz.data:measures>
+	 </viz.data:FlattenedDataset>
+      </viz:dataset>
+	       
+       <viz:feeds>
+         <viz.feeds:FeedItem uid="size" type="Measure" values="Score" />
+	 <viz.feeds:FeedItem uid="color" type="Dimension" values="Subject" />
+       </viz:feeds>
+   </viz:VizFrame>				
+ 
+<HBox height = "20px"/>   
+			
+<viz:VizFrame width = "900px" id = "idcolumn" vizType = "column">
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data = "{ScoreModel>/Scores}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name = "Stream"
+                                value = "{Stream}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name = "Score"
+                             value = "{Value}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid = "valueAxis" type = "Measure"
+                        values = "Score" />
+                    <viz.feeds:FeedItem uid = "categoryAxis" type = "Dimension"
+                        values = "Stream" />    
+                </viz:feeds>
+            </viz:VizFrame>
+                                  
+<HBox height = "20px"/>  
+<List id="idSpecializationList" headerText="Your specializations in streams are:" headerDesign="Standard" footerText="All the Best" noDataText="No Specializations"
+											showNoData="true">
+										
+										</List>
+<HBox height = "20px"/> 
+ 			<HBox>
+
+				<Button text="Previous" visible = "true" icon = "sap-icon://arrow-left" width="10em" press="onPressPreviousRes"/>	
+				<Label text="" class="sapUiSmalMarginBegin"  width="2em"/>
+				<Button text="Retest"  width="10em" icon = "sap-icon://business-objects-experience" press="onPressRetest"/>
+				<Label text="" class="sapUiSmalMarginBegin"  width="2em"/>
+				<Button text="Email"  width="10em" icon = "sap-icon://email" press="onPressEmail"/>
+			</HBox>
+
+						
+				</IconTabFilter>		
+						
+							</items>
+			</IconTabBar>
+        </content>
+    </Page>
+</core:View>

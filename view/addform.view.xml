@@ -1,0 +1,83 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+   	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:ui="sap.ui.commons"
+	xmlns:layout="sap.ui.commons.layout"
+	xmlns:table= "sap.ui.table" 
+	controllerName="controller.addform"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    >
+    <Page id ="idInitPage"  title="Career Selection Counsellor App" class="sapUiContentPadding"
+        showNavButton="false">
+    	 <content>
+ 
+		
+	<HBox id = "idHBoxResult" visible = "true"  width = "auto" height = "auto" alignItems = "Center">
+		<items>
+			<VBox  justifyContent="Center">
+				<items>
+					<HBox>
+						<Label id = "LblName" text="Full Name : " required = "true" width = "100%" design="Bold"  class="sapUiMediumMarginBottom"/>
+					</HBox>
+					<HBox>
+						<Label id = "LblNo" text="Mobile No : " required = "false" width = "100%" design="Bold"  class="sapUiMediumMarginBottom"/>
+					</HBox>					
+					<HBox>
+					 	<Label id = "LblEmail" text="Email ID : " width = "100%" required = "true" design="Bold" class="sapUiMediumMarginBottom"/>
+					</HBox>
+					<HBox>
+						<Label id = "LblBoard" text="Select Board : " required = "true" width = "150px" design="Bold" class="sapUiMediumMarginBottom"/>
+					</HBox>
+					<HBox>
+						<Label id = "LblAY" text="Year of Passing : " required = "true" width = "180px" design="Bold" class="sapUiLargeMarginBottom"/>
+					</HBox>
+					<HBox>
+						<ObjectStatus text="* Required inputs" icon = "sap-icon://hint" state = "Error"/>
+					</HBox>
+				</items>
+			</VBox>
+			
+			<VBox justifyContent="Center" alignItems = "Center" width = "30px"/>
+			
+			<VBox justifyContent="Center" alignItems = "Center">
+				<items>
+					<HBox>
+						<Input id = "InpName" width = "250px" value = "" required = "true" class="sapUiLargeMarginBegin"/>
+					</HBox>
+					<HBox>
+						<Input id = "InpNo" width = "250px" value = "" required = "true" class="sapUiLargeMarginBegin"/>
+					</HBox>
+					<HBox>
+						<Input id = "InpEmail" width = "250px" value = "" type = "Email" change = "changeEmail" class="sapUiLargeMarginBegin"/>
+					</HBox>
+					<HBox>
+						<ComboBox valueState="None" valueStateText="" class="sapUiLargeMarginEnd" width = "150px" items="{/Boards}"  id="idSelectBoard" selectedKey="--Select--" change="changeBoard">
+							<core:ListItem key="{board}" text="{board}">
+							</core:ListItem>
+						</ComboBox>
+					</HBox>
+					<HBox>
+						<ComboBox valueState="None" valueStateText="" class="sapUiLargeMarginEnd" width = "150px"  id="idSelectAY" selectedKey="--Select--" change="changeAY">
+						</ComboBox>
+					</HBox>
+					<HBox height = "20px"/>
+						
+				
+					<HBox>
+						<Button id="idSubmit" text="Start Assessment" class="sapUiLargeMarginEnd" width="auto" press="Submit" />
+					</HBox>
+				</items>
+			</VBox>
+			<VBox justifyContent="Center" alignItems = "Center" width = "400px"/>
+			
+			<VBox justifyContent="Center" alignItems = "Center" >
+				<Image src="images/logo.jpg" height = "300px" width = "300px"/>
+				<HBox height = "20px"/>
+				<ObjectStatus text="Since 1992" icon = "sap-icon://study-leave" state = "Success"/>
+			</VBox>
+		</items>
+			
+	</HBox>   
+        </content>
+    </Page>
+</core:View>
